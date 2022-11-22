@@ -66,7 +66,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 |:------|:------|:------|
 | <a name="database_arn"></a> [database_arn](#output\_database\_arn) | The ARN that uniquely identifies this database. | `string` | 
 | <a name="kms_key_id"></a> [kms_key_id](#output\_kms\_key\_id) | The ARN of the KMS key used to encrypt the data stored in the database. | `string` | 
-| <a name="tables"></a> [tables](#output\_) | The ARN of the Timestream tables. | `string` | 
+| <a name="tables"></a> [tables](#output\_) | The ARN of the Timestream tables. | `map(string)` | 
 
 ### Authors
 
