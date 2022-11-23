@@ -1,0 +1,40 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allow access through Amazon Timestream for all principals in the account that are authorized to use Amazon Timestream",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:CreateGrant",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "kms:CallerAccount": "${aws_account}",
+                    "kms:ViaService": "timestream.${aws_region}.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Sid": "Allow the Timestream Service to describe the key directly",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "timestream.amazonaws.com"
+            },
+            "Action": [
+                "kms:Describe*",
+                "kms:Get*",
+                "kms:List*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
